@@ -2,9 +2,11 @@ import React from 'react';
 import { FilterInput, FilterTitle, FilterWrap } from './Filter.styled';
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
+// import { selectFilter } from 'redux/selectors';
 
 export default function Filter() {
   const dispatch = useDispatch();
+
   return (
     <FilterWrap>
       <FilterTitle>Find contacts by name</FilterTitle>
@@ -15,3 +17,4 @@ export default function Filter() {
     </FilterWrap>
   );
 }
+// event.target.value.toLowerCase();

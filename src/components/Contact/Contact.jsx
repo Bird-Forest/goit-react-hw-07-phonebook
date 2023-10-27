@@ -1,22 +1,26 @@
 import React from 'react';
 import {
   BtnDelete,
-  ContacNsme,
-  ContacNumber,
+  ContactAvatar,
+  ContactName,
+  ContactNumber,
   ContactWrap,
 } from './Contact.styled';
 import { HiOutlineTrash } from 'react-icons/hi';
-import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 
-export default function Contact({ id, name, number }) {
+export default function Contact({ contact }) {
   const dispatch = useDispatch();
   return (
-    <ContactWrap id={nanoid()} key={nanoid()}>
-      <ContacNsme>{name}</ContacNsme>
-      <ContacNumber>{number}</ContacNumber>
-      <BtnDelete type="button" onClick={() => dispatch(deleteContact(id))}>
+    <ContactWrap id={contact.id} key={contact.createdAt}>
+      <ContactAvatar src={contact.avatar} alt="avatar" />
+      <ContactName>{contact.name}</ContactName>
+      <ContactNumber>{contact.phone}</ContactNumber>
+      <BtnDelete
+        type="button"
+        onClick={() => dispatch(deleteContact(contact.id))}
+      >
         <HiOutlineTrash className="icon" />
       </BtnDelete>
     </ContactWrap>

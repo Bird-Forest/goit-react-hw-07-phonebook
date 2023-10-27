@@ -2,29 +2,42 @@ import { styled } from 'styled-components';
 
 export const ContactWrap = styled.li`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 316px;
-  height: 30px;
-  gap: 5px;
-  margin-right: auto;
-  margin-right: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 480px;
+  height: 50px;
+  gap: 10px;
+  /* margin-right: auto;
+  margin-right: auto; */
   margin-bottom: 10px;
 `;
-export const ContacNsme = styled.p`
-  width: 166px;
-  height: 30px;
-  font-size: 16px;
+export const ContactAvatar = styled.img`
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 `;
-export const ContacNumber = styled.p`
-  width: 110px;
-  font-size: 16px;
+export const ContactName = styled.p`
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+`;
+export const ContactNumber = styled.p`
+  width: 160px;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
 `;
 export const BtnDelete = styled.button`
   display: inline-block;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 
   background-color: rgb(255, 221, 51);

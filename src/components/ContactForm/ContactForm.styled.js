@@ -3,45 +3,45 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  width: 316px;
+  align-items: center;
+  width: 480px;
   height: 200px;
 `;
 export const MarkField = styled.span`
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 700;
   margin-bottom: 5px;
 `;
 export const ContactName = styled.input`
   display: block;
-  width: 300px;
-  height: 60px;
+  width: 440px;
+  height: 80px;
   font-size: 16px;
   font-weight: 400;
   border-radius: 5px;
   outline: rgb(255, 217, 25);
   border: 2px rgb(255, 217, 25) solid;
-  padding: 0 8px 0 8px;
+  padding: 0 16px;
   margin-bottom: 5px;
 `;
 export const ContactNumber = styled.input`
   display: block;
-  width: 300px;
-  height: 60px;
+  width: 440px;
+  height: 80px;
   font-size: 16px;
   font-weight: 400;
   border-radius: 5px;
   outline: rgb(255, 217, 25);
   border: 2px rgb(255, 217, 25) solid;
-  padding: 0 8px 0 8px;
+  padding: 0 16px;
   margin-bottom: 15px;
 `;
 export const BtnAdd = styled.button`
   display: inline-block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
-  width: 320px;
-  height: 60px;
+  width: 480px;
+  height: 80px;
   background-color: rgb(255, 221, 51);
   border: 2px rgb(255, 187, 51) solid;
   border-radius: 5px;

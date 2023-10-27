@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 export const Wrap = styled.ul`
   display: flex;
   flex-direction: column;
-  width: 316px;
+  width: 480px;
   padding: 0;
   margin: 0;
   /* margin-right: auto;

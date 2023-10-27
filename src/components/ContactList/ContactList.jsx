@@ -1,29 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Wrap } from './ContactList.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Contact from 'components/Contact/Contact';
-import { nanoid } from '@reduxjs/toolkit';
+import { fetchContacts } from 'redux/operations';
+import {
+  selectError,
+  selectIsLoading,
+  selectVisibleContacts,
+} from 'redux/selectors';
 
 export default function ContactList() {
-  const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state.filter);
-  console.log(filter);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const arrContacts = useSelector(selectVisibleContacts);
 
-  let arrContacts = contacts;
-
-  if (filter.filter !== null) {
-    arrContacts = contacts.filter(({ name }) =>
-      name.toLowerCase().includes(filter.filter)
-    );
-  }
-  console.log(arrContacts);
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+  // console.log(arrContacts);
   const showArr = Array.isArray(arrContacts) && arrContacts.length;
 
   return (
     <Wrap>
+      {isLoading && <p>Loading tasks...</p>}
+      {error && <p>{error}</p>}
       {showArr &&
-        arrContacts.map(({ id, name, number }) => {
-          return <Contact key={nanoid()} id={id} name={name} number={number} />;
+        arrContacts.map(contact => {
+          return <Contact contact={contact} />;
         })}
     </Wrap>
   );
