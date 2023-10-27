@@ -27,7 +27,7 @@ export default function ContactList() {
       {error && <p>{error}</p>}
       {showArr &&
         arrContacts.map(contact => {
-          return <Contact contact={contact} />;
+          return <Contact contact={contact} key={contact.createdAt} />;
         })}
     </Wrap>
   );
