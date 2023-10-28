@@ -4,15 +4,17 @@ import {
   ContactAvatar,
   ContactName,
   ContactNumber,
+  ContactWrap,
 } from './Contact.styled';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
+import { nanoid } from '@reduxjs/toolkit';
 
 export default function Contact({ contact }) {
   const dispatch = useDispatch();
   return (
-    <>
+    <ContactWrap id={contact.id} key={nanoid()}>
       <ContactAvatar src={contact.avatar} alt="avatar" />
       <ContactName>{contact.name}</ContactName>
       <ContactNumber>{contact.phone}</ContactNumber>
@@ -22,6 +24,6 @@ export default function Contact({ contact }) {
       >
         <HiOutlineTrash className="icon" />
       </BtnDelete>
-    </>
+    </ContactWrap>
   );
 }
