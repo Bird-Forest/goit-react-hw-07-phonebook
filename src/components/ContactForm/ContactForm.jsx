@@ -1,3 +1,4 @@
+// import { nanoid } from '@reduxjs/toolkit';
 import {
   Form,
   MarkField,
@@ -5,21 +6,30 @@ import {
   ContactNumber,
   BtnAdd,
 } from './ContactForm.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.users);
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(
-      addContact({
-        name: event.target.elements.name.value,
-        phone: event.target.elements.phone.value,
-        avatar: '../../image/avatar.png',
-      })
+
+    const newUser = {
+      name: event.target.elements.name.value,
+      phone: event.target.elements.phone.value,
+    };
+
+    const hasContact = contacts.some(
+      contact => contact.name === event.target.elements.name.value
     );
+    if (hasContact) {
+      alert(`${hasContact} is already in contacts`);
+      event.target.reset();
+      return;
+    }
+    dispatch(addContact(newUser));
     event.target.reset();
   };
   return (
@@ -34,3 +44,5 @@ export default function ContactForm() {
     </div>
   );
 }
+
+// JSON.stringify(Math.floor(Math.random() * 100))

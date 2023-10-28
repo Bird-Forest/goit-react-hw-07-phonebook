@@ -8,6 +8,8 @@ import {
   selectIsLoading,
   selectVisibleContacts,
 } from 'redux/selectors';
+import { ContactWrap } from 'components/Contact/Contact.styled';
+import { nanoid } from '@reduxjs/toolkit';
 
 export default function ContactList() {
   const dispatch = useDispatch();
@@ -27,7 +29,13 @@ export default function ContactList() {
       {error && <p>{error}</p>}
       {showArr &&
         arrContacts.map(contact => {
-          return <Contact contact={contact} key={contact.createdAt} />;
+          return (
+            <>
+              <ContactWrap id={contact.id} key={nanoid()}>
+                <Contact contact={contact} />
+              </ContactWrap>
+            </>
+          );
         })}
     </Wrap>
   );
