@@ -38,9 +38,13 @@ const contactSlice = createSlice({
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      // const index = state.users.findIndex(user => user.id === action.payload);
+      // const index = state.users.findIndex(
+      //   contact => contact.id === action.payload.id
+      // );
       // state.users.splice(index, 1);
-      state.users = state.users.filter(user => user.id !== action.payload);
+      state.users = state.users.filter(
+        contact => contact.id !== action.payload.id
+      );
     },
     [deleteContact.rejected]: handleRejected,
   },
